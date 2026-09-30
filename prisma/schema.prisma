@@ -1,0 +1,110 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+enum ProductCategory {
+  heating
+  cooling
+  mini_split
+  ventilation
+  duct_cleaning
+}
+
+model AdminUser {
+  id                String    @id @default(cuid())
+  email             String    @unique
+  hashedPassword    String
+  resetToken        String?
+  resetTokenExpiry  DateTime?
+  createdAt         DateTime  @default(now())
+  updatedAt         DateTime  @updatedAt
+}
+
+model Product {
+  id          String          @id @default(cuid())
+  title       String
+  slug        String          @unique
+  category    ProductCategory
+  mrp         Float?
+  description String?         @db.Text
+  isFeatured  Boolean         @default(false)
+  suitableFor String[]        @default([])
+  technology  String[]        @default([])
+  shape       String[]        @default([])
+  images      String[]        @default([])
+  createdAt   DateTime        @default(now())
+  updatedAt   DateTime        @updatedAt
+}
+
+model AdminSetting {
+  id        String   @id @default(cuid())
+  group     String
+  value     String
+  createdAt DateTime @default(now())
+
+  @@unique([group, value])
+}
+
+model Setting {
+  id        String   @id @default(cuid())
+  key       String   @unique
+  value     String   @db.Text
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+enum LeadStatus {
+  PENDING
+  JUNK
+  QUALIFIED
+  UNREACHABLE
+  UNQUALIFIED
+  MEETING_BOOKED
+}
+
+model Lead {
+  id             String     @id @default(cuid())
+  name           String
+  email          String
+  phone          String
+   address       String? 
+  service        String?
+  message        String?    @db.Text
+  propertyType   String?
+  propertySize   String?
+  utmSource      String?
+  utmMedium      String?
+  utmCampaign    String?
+  utmTerm        String?
+  utmContent     String?
+  gclid          String?
+  pageUrl        String?
+  referrer       String?
+  status         LeadStatus @default(PENDING)
+  notes          LeadNote[]
+  createdAt      DateTime   @default(now())
+  updatedAt      DateTime   @updatedAt
+}
+
+model LeadNote {
+  id        String   @id @default(cuid())
+  content   String   @db.Text
+  leadId    String
+  lead      Lead     @relation(fields: [leadId], references: [id], onDelete: Cascade)
+  createdAt DateTime @default(now())
+}
+
+model WebhookLog {
+  id        String   @id @default(cuid())
+  leadId    String?
+  url       String
+  status    Int
+  payload   String   @db.Text
+  response  String?  @db.Text
+  error     String?  @db.Text
+  createdAt DateTime @default(now())
+}
