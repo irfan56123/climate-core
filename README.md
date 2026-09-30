@@ -1,36 +1,167 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
-## Getting Started
-fb-landnnn
-First, run the development server:
 
+# ClimateCore – HVAC Business Website
+
+A modern, responsive website for an HVAC (Heating, Ventilation, and Air Conditioning) business, designed to showcase services, communicate business information, and provide a professional digital presence.
+
+**Live Demo:** [https://climate-core.vercel.app/](https://climate-core.vercel.app/)
+
+---
+
+## Overview
+
+ClimateCore is a full-stack web application built to deliver a modern and user-friendly experience for an HVAC business.
+
+The project combines a responsive frontend with a PostgreSQL database and Prisma ORM, using the Next.js ecosystem to build and manage the application.
+
+## Tech Stack
+
+### Frontend
+- Next.js
+- React
+- TypeScript
+- Tailwind CSS
+- Framer Motion
+- GSAP
+- Lucide React
+
+### Backend & Database
+- Next.js
+- PostgreSQL
+- Prisma ORM
+- Neon Database
+
+### Tools & Services
+- Git & GitHub
+- Vercel
+- Vercel Blob
+- Resend
+
+## Features
+
+- Modern and responsive website design
+- Mobile-friendly user interface
+- HVAC business-focused presentation
+- Smooth animations and interactive UI elements
+- Full-stack architecture
+- PostgreSQL database integration
+- Prisma ORM for database management
+- Production deployment with Vercel
+
+## Getting Started
+
+Follow these instructions to run the project locally.
+
+### Prerequisites
+
+Make sure you have the following installed:
+
+- Node.js (LTS recommended)
+- npm
+- PostgreSQL database or Neon account
+- Git
+
+### 1. Clone the Repository
+
+```bash
+git clone https://github.com/irfan56123/climate-core.git
+```
+
+### 2. Navigate to the Project
+
+```bash
+cd climate-core
+```
+
+### 3. Install Dependencies
+
+```bash
+npm install
+```
+
+### 4. Configure Environment Variables
+
+Create a `.env` file in the root directory.
+
+Add the environment variables required by your local configuration, such as your PostgreSQL connection string and authentication secrets.
+
+Example:
+
+```env
+DATABASE_URL="your_postgresql_connection_string"
+```
+
+Refer to the project's Prisma configuration and authentication setup for any additional required variables.
+
+**Important:** Never commit your `.env` file or expose database credentials and API keys.
+
+### 5. Generate Prisma Client
+
+```bash
+npx prisma generate
+```
+
+### 6. Sync Database Schema
+
+```bash
+npm run db:push
+```
+
+### 7. Start Development Server
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Available Scripts
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+| Command | Description |
+|---|---|
+| `npm run dev` | Start development server |
+| `npm run build` | Build the application |
+| `npm run start` | Start production server |
+| `npm run lint` | Run ESLint |
+| `npm run db:push` | Sync Prisma schema with database |
+| `npm run db:seed` | Seed database |
+| `npm run db:studio` | Open Prisma Studio |
 
-## Learn More
+## Deployment
 
-To learn more about Next.js, take a look at the following resources:
+The application is deployed on Vercel.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+**Live Application:** https://climate-core.vercel.app/
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+For your own deployment:
+1. Import the repository into Vercel.
+2. Configure the required environment variables.
+3. Connect your PostgreSQL database.
+4. Deploy the application.
 
-## Deploy on Vercel
+## Project Structure
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```text
+climate-core/
+├── app/                 # Next.js App Router
+├── components/          # Reusable UI components
+├── prisma/              # Database schema and seed
+├── public/              # Static assets
+├── package.json
+├── tsconfig.json
+└── README.md
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+*Note: The structure above is a high-level overview. Actual folders may vary.*
+
+## Author
+
+**Irfan Ahmad**
+
+B.Tech – Information Technology
+
+- GitHub: [@irfan56123](https://github.com/irfan56123)
+- Project: [ClimateCore](https://github.com/irfan56123/climate-core)
+
+---
+
+Built with Next.js, TypeScript, and PostgreSQL.
